@@ -1,0 +1,44 @@
+title: "GrapheneOS"
+version: "1.0.0"
+
+args:
+  - id: android_certs
+    prompt: "Path to android signing keys"
+    required: true
+    type: file
+  - id: devices
+    prompt: "Device codenames (space separated)"
+    required: true
+    type: value
+  - id: channel
+    prompt: "GrapheneOS build channel"
+    required: true
+    type: value
+  - id: update_url
+    prompt: "Update URL (without trailing slash)"
+    required: true
+    type: value
+  - id: r2_bucket_name
+    prompt: "R2 bucket name"
+    required: true
+    type: value
+  - id: r2_access_key_id
+    prompt: "R2 access key ID"
+    required: true
+    type: value
+  - id: r2_secret_access_key
+    prompt: "R2 secret access key"
+    required: true
+    type: value
+  - id: r2_endpoint
+    prompt: "R2 endpoint"
+    required: true
+    type: value
+
+build:
+  - name: Make, Sign and Release
+    run: |
+      /ham-recipe/scripts/make-and-sign.sh
+
+post_build:
+  - /ham-recipe/scripts/upload.sh
