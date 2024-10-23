@@ -1,6 +1,5 @@
 #!/bin/bash -i
 #
-set -o nounset
 set -o pipefail
 set -e
 
