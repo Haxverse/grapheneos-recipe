@@ -50,7 +50,7 @@ download_source() {
    git config gpg.ssh.allowedSignersFile ~/.ssh/grapheneos_allowed_signers
    git verify-tag $(git describe)
    cd ../..
-   repo sync
+   repo sync -c
    apply_patches
 }
 
